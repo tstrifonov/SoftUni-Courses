@@ -2,6 +2,9 @@ function magicSum(arr, n) {
     for (let i = 0; i < arr.length; i++) {
         for (let u = i; u < arr.length; u++) {
             if (arr[i] + arr[u] == n) {
+                if (i == u) {
+                    continue;
+                }
                 console.log(`${arr[i]} ${arr[u]}`);
             }
         }
