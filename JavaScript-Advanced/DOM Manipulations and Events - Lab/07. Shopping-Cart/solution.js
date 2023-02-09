@@ -1,22 +1,23 @@
 function solve() {
-  const productsButtons = Array.from(
-    document.getElementsByClassName("add-product")
-  );
+  const products = Array.from(document.getElementsByClassName("product"));
   const textArea = document.querySelector("textarea");
+  const checkoutButton = document.querySelector(".checkout");
+  let list = [];
+  let totalPrice = 0;
 
-  for (let product of productsButtons) {
-    product.addEventListener("click", () => {
-      const productParent = product.parentElement.parentElement;
-      console.log(productParent); //проверка
-      const name = productParent.getElementsByClassName("product-title");
-      console.log(name); //проверка
-      const money = productParent.getElementsByClassName("product-line-price");
-      console.log(money); //проверка
-      textArea.textContent += `Added ${name.innerText} for ${money.innerText} to the cart.\n`;
+  products.forEach((product) => {
+    const button = product.querySelector("button");
+    button.addEventListener("click", () => {
+      const name = product.querySelector(".product-title").innerText;
+      //ей тук беше грешката => аз си намирах елемента така product.etElementsByClassName("product-title")
+      const money = product.querySelector(".product-line-price").innerText;
+      textArea.textContent += `Added ${name} for ${money} to the cart.\n`;
+      list.push(name);
+      totalPrice += Number(money);
     });
-  }
-}
+  });
 
-//Защо по дяволите на мога да изкарам съдържанието от елементите name и money?
-//Игнорирай как намирам parent-a. Ясно ми е, че може по-добре да стане.
-//Това, което не мога да разбера е защо въпреки че съм хванал правилните елементи не мога да им изкарам съдържанието
+  checkoutButton.addEventListener("click", () => {
+    textArea.textContent = `You bought ${list.join(", ")} for ${totalPrice}.`;
+  });
+}
