@@ -66,6 +66,8 @@ function solve() {
     }
 
     function moveToComplete() {
+      //finishButton.remove();
+      //deleteButton.remove();
       buttons.remove();
       complete.appendChild(newTask);
     }
