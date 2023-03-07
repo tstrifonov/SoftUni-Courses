@@ -1,0 +1,17 @@
+{
+  "name": "test-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "TT",
+  "license": "ISC",
+  "dependencies": {
+    "-": "^0.0.1",
+    "chai": "^4.3.7",
+    "g": "^2.0.1",
+    "mocha": "^10.2.0"
+  }
+}

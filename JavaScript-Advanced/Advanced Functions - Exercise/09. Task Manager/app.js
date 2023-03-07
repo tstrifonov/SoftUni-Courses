@@ -18,18 +18,16 @@ function solve() {
       return;
     }
 
-    console.log("not refresh");
-
     const newTask = document.createElement("article");
 
     const header = document.createElement("h3");
     header.textContent = taskField.value;
     newTask.appendChild(header);
     const paragraphDesription = document.createElement("p");
-    paragraphDesription.textContent = descriptionField.value;
+    paragraphDesription.textContent = `Description: ${descriptionField.value}`;
     newTask.appendChild(paragraphDesription);
     const paragraphDate = document.createElement("p");
-    paragraphDate.textContent = dateField.value;
+    paragraphDate.textContent = `Due Date: ${dateField.value}`;
     newTask.appendChild(paragraphDate);
 
     const buttons = document.createElement("div");
@@ -58,7 +56,7 @@ function solve() {
       finishButton.classList.add("orange");
       finishButton.addEventListener("click", moveToComplete);
       buttons.appendChild(finishButton);
-      inProgress.appendChild(newTask);
+      inProgress.lastElementChild.appendChild(newTask);
     }
 
     function deleteTask() {
@@ -69,7 +67,7 @@ function solve() {
       //finishButton.remove();
       //deleteButton.remove();
       buttons.remove();
-      complete.appendChild(newTask);
+      complete.lastElementChild.appendChild(newTask);
     }
   }
 }
